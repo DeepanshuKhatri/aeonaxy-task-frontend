@@ -16,39 +16,50 @@ import { faInstagram, faPinterest, faSquareFacebook, faTwitter } from "@fortawes
 
 const Footer = () => {
   return (
-    <div className="w-full bg-[#fafafa] h-[600px] px-[70px] py-[70px]">
-      <div className="flex justify-evenly gap-10">
-        <div className="flex  flex-col w-[290px] text-start items-start">
-          <img src={dribble_image} className="h-32" alt="" />
-          <div className="relative w-full">
-            <p className="absolute text-gray-600 text-[15px] top-[-20px]">Dribble is the world's leading community for creatives to share, grow, adn get hired.</p>
+    <div className="w-full  px-[20px] pt-[20px] bg-[#fafafa]  lg:px-[70px] lg:pt-[70px]">
+      <div className="flex flex-col md:flex-row items-start justify-start md:justify-evenly gap-5 lg:gap-10">
+        <div className="flex w-full justify-evenly items-center flex-row md:flex-col md:w-[290px] text-start md:items-start">
+          <img src={dribble_image} className="lg:h-32 h-24" alt="" />
+          <div className="relative hidden sm:block w-[250px]">
+            <p className="absolute text-gray-600 text-xs lg:text-sm top-[-20px]">Dribble is the world's leading community for creatives to share, grow, adn get hired.</p>
           </div>
-          <div className="mt-[65px] flex gap-5">
-            <FontAwesomeIcon  icon={faBasketball} />
-            <FontAwesomeIcon  icon={faTwitter} />
+          <div className="md:mt-[65px] mt-0 justify-center items-center flex gap-5">
+            <FontAwesomeIcon icon={faBasketball} />
+            <FontAwesomeIcon icon={faTwitter} />
             <FontAwesomeIcon icon={faSquareFacebook} />
             <FontAwesomeIcon icon={faInstagram} />
             <FontAwesomeIcon icon={faPinterest} />
           </div>
         </div>
-        <FooterList title="For designers" list={for_designers} />
-        <div>
-          <FooterList title="Hire designers" list={hire_designers} />
-          <FooterList title="Brands" list={brands} />
+
+        <div className="flex justify-start  flex-wrap sm:flex-nowrap lg:gap-10  gap-5">
+
+          <div>
+            <FooterList title="For designers" list={for_designers} />
+          </div>
+          <div>
+            <FooterList title="Hire designers" list={hire_designers} />
+            <FooterList title="Brands" list={brands} />
+          </div>
+          <div>
+            <FooterList title="Company" list={company} />
+          </div>
+          <div>
+            <FooterList title="Directories" list={directories} />
+            <FooterList title="Design assets" list={design_assets} />
+          </div>
+          <div>
+            <FooterList title="Design Resources" list={design_resources} />
+          </div>
         </div>
-        <FooterList title="Company" list={company} />
-        <div>
-          <FooterList title="Directories" list={directories} />
-          <FooterList title="Design assets" list={design_assets} />
-        </div>
-        <FooterList title="Design Resources" list={design_resources} />
       </div>
+
       <hr />
-      <div className="flex justify-between py-14">
-        <p> &#169; 2023 Dribble. All rights reserved.</p>
+      <div className="flex justify-between py-10">
+        <p className="text-sm  text-gray-600"> &#169; 2023 Dribble. All rights reserved.</p>
         <div>
-          <p>
-            <span>20, 501, 853</span> shots dribbled{" "}
+          <p className="text-sm text-gray-600">
+            <span className="text-md font-bold text-gray-900">20, 501, 853</span> shots dribbled{" "}
             <FontAwesomeIcon color="#EA4B8A" icon={faBasketball} />
           </p>
         </div>

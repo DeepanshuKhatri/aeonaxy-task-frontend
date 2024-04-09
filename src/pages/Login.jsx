@@ -1,25 +1,48 @@
 import React, { useEffect, useState } from "react";
 import login_image from "../assets/images/login_image.jpeg";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch } from 'react-redux'
+import { updateUserDetails } from "../feature/user/userSlice";
+import axios from "axios"
 const Login = () => {
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({ name: "", username: "", email: "", password: "" });
+    const [error, setError] = useState();
     const handleChange = (e) => {
         const { value, name } = e.target;
         setFormData((data) => ({ ...data, [name]: value }));
     };
-
-    const handleSubmit = (e) => {
+    console.log(error)
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        navigate("/profile")
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/signup`, formData);
+            console.log(response)
+            dispatch(updateUserDetails({
+                username: formData.username,
+                email: formData.email
+            }))
+            navigate("/profile")
+
+        } catch (error) {
+            console.log(error)
+            console.log(error.response)
+            if (error.response.status == 409) {
+                setError(
+                    error.response.data.message,
+                );
+            }
+        }
+
     }
 
     return (
         <div className="flex w-full h-screen">
-            <div className=" h-full md:block md:w-[370px] xl:w-[30%]  hidden flex  py-14 gap-3 flex-col text-left items-start bg-[#F3D783]">
+            <div className=" h-full md:flex md:w-[370px] xl:w-[30%]  hidden   py-14 gap-3 flex-col text-left items-start bg-[#F3D783]">
                 <h1 className="px-16">Dribble</h1>
-                <h1 className="font-bold text-xl px-16">
+                <h1 className="font-bold text-[#856015] text-xl px-16">
                     Discover the world's top designer's and creatives.
                 </h1>
                 <img src={login_image} alt="login_image" />
@@ -28,8 +51,9 @@ const Login = () => {
                 <div className=" w-full mb-5 flex justify-end text-sm">
                     Already a member?&nbsp;<span className=" text-purple-700"> Sign In</span>
                 </div>
-                <div className="flex flex-col md:w-[80%] max-w-[500px] sm:w-[500px] xs:w-[80%] justify-start gap-16">
+                <div className="flex flex-col md:w-[80%] max-w-[500px] sm:w-[500px] xs:w-[80%] justify-start gap-8">
                     <p className="text-left text-[24px] font-bold">Sign Up to Dribble</p>
+                    {error && <h1 className="text-red-500">* {error}</h1>}
                     <form onSubmit={handleSubmit}>
                         <div className="flex flex-col md:flex-row md:gap-8 w-full ">
                             <div className="mb-10 flex-1">
@@ -37,7 +61,7 @@ const Login = () => {
                                 <input type="text" id="name" name="name" value={formData.name} onChange={(e) => handleChange(e)} className="mt-1 p-2 bg-[#F3F3F3] w-full border rounded-md" required />
                             </div>
                             <div className="mb-10 flex-1">
-                                <label htmlFor="name" className="block text-sm  font-bold">Username</label>
+                                <label htmlFor="name" className="block text-sm font-bold">Username</label>
                                 <input type="text" id="username" name="username" value={formData.username} onChange={(e) => handleChange(e)} className="mt-1 p-2 bg-[#F3F3F3] border w-full rounded-md" required />
                             </div>
                         </div>
