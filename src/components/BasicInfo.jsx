@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import camera_img from "../assets/images/camera_img.svg";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateUserDetails } from "../feature/user/userSlice";
 import axios from "axios";
 
@@ -34,7 +34,9 @@ const BasicInfo = ({ setShowProfile, setLocation, image, location }) => {
         <h1 className="text-[32px] font-semibold">
           Welcome! Let's create your profile
         </h1>
-        <p className="text-gray-500">Let others get to know you better! You can do these later</p>
+        <p className="text-gray-500">
+          Let others get to know you better! You can do these later
+        </p>
       </div>
       <h1 className="font-bold mb-10">Add an avatar</h1>
       <div className="flex flex-col sm:flex-row items-center mb-10 gap-10">
@@ -81,16 +83,16 @@ const BasicInfo = ({ setShowProfile, setLocation, image, location }) => {
       <div className="text-center">
         <button
           disabled={image == "" || location == ""}
-          onClick={()=> setShowProfile(false)}
+          onClick={() => setShowProfile(false)}
           className="bg-[#EA4B8A] mb-2 disabled:bg-[#F8B8D0] w-[200px] h-[36px] text-white border rounded-lg"
         >
           Next
         </button>
-        { image != "" && location != "" && 
+        {image != "" && location != "" && (
           <p className="text-gray-500 text-sm text-center mb-[50px]">
-          or Press RETURN
-        </p>
-        }
+            or Press RETURN
+          </p>
+        )}
       </div>
     </div>
   );

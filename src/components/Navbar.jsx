@@ -20,10 +20,10 @@ const Navbar = () => {
       </div>
       <div className="hidden justify-center sm:flex gap-5 items-center">
         {/* <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label> */}
-        <div class="relative">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <div className="relative">
+          <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
-              class="w-3 h-3 text-gray-500 dark:text-gray-400"
+              className="w-3 h-3 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -31,9 +31,9 @@ const Navbar = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                // stroke-linecap="round"
+                // stroke-linejoin="round"
+                // stroke-width="2"
                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
               />
             </svg>
@@ -41,7 +41,7 @@ const Navbar = () => {
           <input
             type="search"
             id="search"
-            class="block w-[110px] p-[6px] ps-8 text-sm text-gray-900 bg-gray-200  rounded-md "
+            className="block w-[110px] p-[6px] ps-8 text-sm text-gray-900 bg-gray-200  rounded-md "
             placeholder="Search"
             required
           />

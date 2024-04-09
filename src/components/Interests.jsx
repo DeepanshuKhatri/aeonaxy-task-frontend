@@ -5,7 +5,6 @@ import hire_img from "../assets/images/hire_img.png";
 import inspiration_img from "../assets/images/inspiration_img.png";
 import axios from "axios";
 const Interests = ({ handleFinish, interests, setInterests }) => {
-  console.log(interests.length)
   return (
     <div className="flex flex-col items-center m-10">
       <h1 className="text-[32px] font-semibold">What brings you to Dribble?</h1>

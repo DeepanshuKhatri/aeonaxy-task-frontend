@@ -1,35 +1,35 @@
 import React, { useState } from "react";
 import dribble_logo from "../assets/images/dribble_image_logo.webp";
 import { faLessThan } from "@fortawesome/free-solid-svg-icons";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import BasicInfo from "../components/BasicInfo";
 import Interests from "../components/Interests";
-import axios from 'axios'
+import axios from "axios";
 
 const Profile = () => {
   const [showProfile, setShowProfile] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [location, setLocation] = useState("");
   const [interests, setInterests] = useState([]);
   const user = useSelector((state) => state.user);
   const email = user.email;
   const image = user.image;
-  // const [image, setimage] = useState(null);
   const handleFinish = async () => {
-    const response = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/user`,
-      {
-        email,
-        interests,
-      }
-    );
-    navigate('/')
-    console.log(response);
+    try {
+      const response = await axios.put(
+        `${process.env.REACT_APP_BACKEND_URL}/user`,
+        {
+          email,
+          interests,
+        }
+      );
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  // const cloudinary = new Cloudinary({ cloud: { cloudName: 'deukl74jh' } });
 
   return (
     <div className="flex flex-col px-10">
@@ -45,9 +45,20 @@ const Profile = () => {
       </div>
       <div className="flex flex-col justify-center items-center">
         {showProfile && (
-          <BasicInfo location={location} setLocation={setLocation} image={image} setShowProfile={setShowProfile} />
+          <BasicInfo
+            location={location}
+            setLocation={setLocation}
+            image={image}
+            setShowProfile={setShowProfile}
+          />
         )}
-        {!showProfile && <Interests interests={interests} setInterests={setInterests} handleFinish={handleFinish} />}
+        {!showProfile && (
+          <Interests
+            interests={interests}
+            setInterests={setInterests}
+            handleFinish={handleFinish}
+          />
+        )}
       </div>
     </div>
   );

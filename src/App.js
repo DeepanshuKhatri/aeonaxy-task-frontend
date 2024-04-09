@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux'
 
 function App() {
   const userEmail = useSelector(state => state.user.email);
-  console.log(userEmail)
   return (
     <BrowserRouter>
       <Routes>

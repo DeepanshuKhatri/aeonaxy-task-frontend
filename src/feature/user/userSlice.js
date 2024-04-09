@@ -11,16 +11,12 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     updateUserDetails: (state, action)=>{
-        console.log(state)
         const updatedFields = action.payload;
         Object.keys(updatedFields).forEach(key => {
-            console.log(key)
             if (state.hasOwnProperty(key)) {
-                console.log(state[key], updatedFields[key])
               state[key] = updatedFields[key];
             }
           });
-        console.log(state)
     },
     removeUser: (state)=>{
         state = initialState;

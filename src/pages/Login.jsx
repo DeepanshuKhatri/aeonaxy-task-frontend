@@ -14,12 +14,10 @@ const Login = () => {
         const { value, name } = e.target;
         setFormData((data) => ({ ...data, [name]: value }));
     };
-    console.log(error)
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/signup`, formData);
-            console.log(response)
             dispatch(updateUserDetails({
                 username: formData.username,
                 email: formData.email
@@ -28,7 +26,6 @@ const Login = () => {
 
         } catch (error) {
             console.log(error)
-            console.log(error.response)
             if (error.response.status == 409) {
                 setError(
                     error.response.data.message,
