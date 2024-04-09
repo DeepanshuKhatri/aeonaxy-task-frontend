@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import login_image from "../assets/images/login_image.jpeg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'
@@ -22,11 +22,13 @@ const Login = () => {
                 username: formData.username,
                 email: formData.email
             }))
-            navigate("/profile")
+            if(response.status === 201){
+                navigate("/profile")
+            }
 
         } catch (error) {
             console.log(error)
-            if (error.response.status == 409) {
+            if (error.response.status=== 409) {
                 setError(
                     error.response.data.message,
                 );
@@ -72,11 +74,11 @@ const Login = () => {
                         </div>
                         <div className="mb-8 flex gap-3 items-start">
                             <input className="h-6 w-[40px]" type="checkbox" required />
-                            <p className="text-[#424242] text-[16px] text-start">Creating an account means you're okay with our <a href="#" className="text-purple-700">Terms of service, Privacy Policy, </a> and out default <a href="#" className="text-purple-700">Notification Settings.</a></p>
+                            <p className="text-[#424242] text-[16px] text-start">Creating an account means you're okay with our <span href="#" className="text-purple-700">Terms of service, Privacy Policy, </span> and out default <span href="#" className="text-purple-700">Notification Settings.</span></p>
                         </div>
                         <button type="submit" className="bg-[#EA4B8B] h-[40px] w-[200px] rounded-lg mb-6 text-white">Create Account</button>
                         <p className="text-[12px] text-[#424242]">This site is protected by reCAPTCHA and the Google </p>
-                        <p className="text-[12px] text-[#424242]"><a className="text-purple-700 " href="#">Privacy Policy</a> and <a href="#" className="text-purple-700">Terms of Service</a> apply.</p>
+                        <p className="text-[12px] text-[#424242]"><span className="text-purple-700 " href="#">Privacy Policy</span> and <span href="#" className="text-purple-700">Terms of Service</span> apply.</p>
                     </form>
                 </div>
             </div>

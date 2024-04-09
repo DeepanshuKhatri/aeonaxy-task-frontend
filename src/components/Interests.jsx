@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "./Card";
 import designer_img from "../assets/images/designer_img.png";
 import hire_img from "../assets/images/hire_img.png";
 import inspiration_img from "../assets/images/inspiration_img.png";
-import axios from "axios";
 const Interests = ({ handleFinish, interests, setInterests }) => {
   return (
     <div className="flex flex-col items-center m-10">
@@ -36,7 +35,7 @@ const Interests = ({ handleFinish, interests, setInterests }) => {
       <button
         className="bg-[#EA4B8A] cursor-pointer disabled:cursor-not-allowed disabled:bg-[#F8B8D0] w-[200px] mb-3 h-[40px] rounded-xl text-white"
         onClick={handleFinish}
-        disabled={(interests.length === 0)}
+        disabled={(interests.length=== 0)}
       >
         Finish
       </button>

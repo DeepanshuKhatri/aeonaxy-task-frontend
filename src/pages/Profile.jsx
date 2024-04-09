@@ -25,7 +25,9 @@ const Profile = () => {
           interests,
         }
       );
-      navigate("/");
+      if(response.status === 200){
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }

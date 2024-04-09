@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import camera_img from "../assets/images/camera_img.svg";
 import { useDispatch } from "react-redux";
 import { updateUserDetails } from "../feature/user/userSlice";
@@ -82,13 +82,13 @@ const BasicInfo = ({ setShowProfile, setLocation, image, location }) => {
       />
       <div className="text-center">
         <button
-          disabled={image == "" || location == ""}
+          disabled={image=== "" || location=== ""}
           onClick={() => setShowProfile(false)}
           className="bg-[#EA4B8A] mb-2 disabled:bg-[#F8B8D0] w-[200px] h-[36px] text-white border rounded-lg"
         >
           Next
         </button>
-        {image != "" && location != "" && (
+        {image!== "" && location!== "" && (
           <p className="text-gray-500 text-sm text-center mb-[50px]">
             or Press RETURN
           </p>
